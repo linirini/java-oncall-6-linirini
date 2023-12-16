@@ -48,7 +48,7 @@ public class WorkingOrders {
         }
     }
 
-    public String getWorker(){
+    public String pullOutWorker() {
         String name = workingOrders.get(currentSequence);
         currentSequence++;
         return name;
