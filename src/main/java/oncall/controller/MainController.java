@@ -26,7 +26,7 @@ public class MainController {
         WorkingOrders weekWorkingOrders = getWeekWorkingOrdersUntilNoError();
         WorkingOrders weekendWorkingOrders = getWeekendWorkingOrdersUntilNoError(weekWorkingOrders);
         WorkSchedule workSchedule = allocationService.allocate(calender,weekWorkingOrders,weekendWorkingOrders);
-
+        outputView.printEmergencyWorkSchedule(workSchedule);
     }
 
 

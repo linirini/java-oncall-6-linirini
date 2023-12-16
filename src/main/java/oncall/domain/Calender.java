@@ -37,7 +37,7 @@ public class Calender {
     public boolean isWeekend(int date) {
         return (date - this.firstWeekend.get(0)) % DAY_COUNT == 0 || (
                 date - this.firstWeekend.get(1) % DAY_COUNT
-                        == 0) || Holiday.isHoliday(month, date);
+                        == 0);
     }
 
     public int getLastDateOfMonth() {

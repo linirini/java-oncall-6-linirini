@@ -16,11 +16,6 @@ class CalenderTest {
     }
 
     @Test
-    void 평일_공휴일_이다() {
-        assertThat(new Calender(Month.MARCH, Day.MONDAY).isWeekend(1)).isTrue();
-    }
-
-    @Test
     void 평일이다() {
         assertThat(new Calender(Month.DECEMBER, Day.WEDNESDAY).isWeekend(6)).isFalse();
     }
