@@ -8,6 +8,8 @@ import static oncall.util.Month.MARCH;
 import static oncall.util.Month.MAY;
 import static oncall.util.Month.OCTOBER;
 
+import java.util.Arrays;
+
 public enum Holiday {
 
     NEW_YEARS_DAY(JANUARY, 1, "신정"),
@@ -28,6 +30,11 @@ public enum Holiday {
         this.month = month;
         this.date = date;
         this.name = name;
+    }
+
+    public static boolean isHoliday(Month month, int date) {
+        return Arrays.stream(values())
+                .anyMatch(holiday -> holiday.month == month && holiday.date == date);
     }
 
 }
