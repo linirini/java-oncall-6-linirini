@@ -15,8 +15,8 @@ public class AllocationService {
         for (int date = START_DATE; date <= calender.getLastDateOfMonth(); date++) {
             String workerName = getWorkerName(calender, weekWorkers, weekendWorkers, date);
             if (workedYesterday(date, workerName, workSchedule)) {
-                String tomorrowWorkerName = getWorkerName(calender, weekWorkers, weekendWorkers, date);
-                workSchedule.add(tomorrowWorkerName);
+                String nextTurnWorkerName = getWorkerName(calender, weekWorkers, weekendWorkers, date);
+                workSchedule.add(nextTurnWorkerName);
             }
             workSchedule.add(workerName);
         }
