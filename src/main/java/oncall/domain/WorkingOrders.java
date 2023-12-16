@@ -8,6 +8,7 @@ import static oncall.util.ExceptionEnum.DUPLICATED_NICK_NAME;
 import static oncall.util.ExceptionEnum.INVALID_NICK_NAME_COUNT;
 import static oncall.util.ExceptionEnum.INVALID_NICK_NAME_LENGTH;
 
+import java.util.Collections;
 import java.util.List;
 
 public class WorkingOrders {
@@ -51,6 +52,10 @@ public class WorkingOrders {
         String name = workingOrders.get(currentSequence);
         currentSequence++;
         return name;
+    }
+
+    public List<String> getWorkingOrders() {
+        return Collections.unmodifiableList(workingOrders);
     }
 
 }
