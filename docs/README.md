@@ -13,7 +13,7 @@
   - [ ] 기본 : 순번에 따라
   - [ ] 평일, 휴일 비상 근무 순번 다름
   - [ ] 비상 근무자는 평일, 휴일 각각 1회 편성
-    - [ ] 평일, 휴일 구분하기 - Calender#isWeekend
+    - [x] 평일, 휴일 구분하기 - Calender#isWeekend
   - [ ] 연속 2일 근무 불가
     - [ ] 연속 근무 파악하기 - WorkSchedule#workedYesterday 
   - [ ] 연속되는 2일차가 평일/주말인지에 따라 해당 다음 근무자와 순서 바꿔 편성 - WorkSchedule#change

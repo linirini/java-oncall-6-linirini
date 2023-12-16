@@ -1,7 +1,6 @@
 package oncall.domain;
 
 import java.util.List;
-import oncall.util.Calender;
 
 public class WorkSchedule {
 
@@ -11,6 +10,10 @@ public class WorkSchedule {
     public WorkSchedule(Calender calender, List<String> schedules) {
         this.calender = calender;
         this.schedules = schedules;
+    }
+
+    public void add(String name) {
+        schedules.add(name);
     }
 
 }
