@@ -33,8 +33,15 @@ public enum Day {
                 .orElseThrow(() -> new IllegalArgumentException(INVALID_DAY.getMessage()));
     }
 
+    public static Day getDayBySequence(int sequence) {
+        return Arrays.stream(values()).filter(day -> day.sequence==sequence).findFirst().get();
+    }
+
     public int getDaySequence(){
         return sequence;
     }
 
+    public String getName() {
+        return name;
+    }
 }

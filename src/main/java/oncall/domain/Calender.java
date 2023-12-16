@@ -1,5 +1,6 @@
 package oncall.domain;
 
+import static oncall.util.Constants.DAY_COUNT;
 import static oncall.util.calender.Day.SATURDAY;
 import static oncall.util.calender.Day.SUNDAY;
 
@@ -34,12 +35,23 @@ public class Calender {
     }
 
     public boolean isWeekend(int date) {
-        return (date - this.firstWeekend.get(0)) % 7 == 0 || (date - this.firstWeekend.get(1) % 7
-                == 0) || Holiday.isHoliday(month,date);
+        return (date - this.firstWeekend.get(0)) % DAY_COUNT == 0 || (
+                date - this.firstWeekend.get(1) % DAY_COUNT
+                        == 0) || Holiday.isHoliday(month, date);
     }
 
-    public int getLastDateOfMonth(){
+    public int getLastDateOfMonth() {
         return month.getLastDate();
+    }
+
+    public Month getMonth() {
+        return month;
+    }
+
+    public String getDay(int date) {
+        int daySequence =
+                (startDay.getDaySequence() + date % DAY_COUNT - 1 + DAY_COUNT) % DAY_COUNT;
+        return Day.getDayBySequence(daySequence).getName();
     }
 
 }

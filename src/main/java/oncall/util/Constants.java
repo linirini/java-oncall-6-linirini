@@ -10,5 +10,7 @@ public class Constants {
     public static final String SEPARATOR = ",";
     public static final int NUM_OF_ITEM = 2;
     public static final char BLANK = ' ';
+    public static final int START_DATE = 1;
+    public static final int DAY_COUNT = 7;
 
 }

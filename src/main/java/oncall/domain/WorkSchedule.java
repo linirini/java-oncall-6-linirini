@@ -35,4 +35,8 @@ public class WorkSchedule {
         schedules.add(workerName);
     }
 
+    public Calender getCalender() {
+        return calender;
+    }
+
 }
