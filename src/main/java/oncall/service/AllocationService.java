@@ -14,12 +14,12 @@ public class AllocationService {
         WorkSchedule workSchedule = new WorkSchedule(calender);
         for (int date = START_DATE; date <= calender.getLastDateOfMonth(); date++) {
             String workerName = getWorkerName(calender, weekWorkers, weekendWorkers, date);
-            workSchedule.add(workerName);
             if (workedYesterday(date, workerName, workSchedule)) {
                 String tomorrowWorkerName = getWorkerName(calender, weekWorkers, weekendWorkers,
                         date);
-                workSchedule.change(tomorrowWorkerName, date);
+                workSchedule.add(tomorrowWorkerName);
             }
+            workSchedule.add(workerName);
         }
         return workSchedule;
     }

@@ -29,12 +29,6 @@ public class WorkSchedule {
         return schedules.get(date);
     }
 
-
-    public void change(String workerName, int date) {
-        schedules.remove(date);
-        schedules.add(workerName);
-    }
-
     public Calender getCalender() {
         return calender;
     }
