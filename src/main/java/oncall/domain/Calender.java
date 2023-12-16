@@ -7,7 +7,6 @@ import static oncall.util.calender.Day.SUNDAY;
 
 import java.util.List;
 import oncall.util.calender.Day;
-import oncall.util.calender.Holiday;
 import oncall.util.calender.Month;
 
 public class Calender {
@@ -36,9 +35,8 @@ public class Calender {
     }
 
     public boolean isWeekend(int date) {
-        return (date - this.firstWeekend.get(0)) % DAY_COUNT == 0 || (
-                date - this.firstWeekend.get(1) % DAY_COUNT
-                        == 0);
+        return (date - this.firstWeekend.get(0)) % DAY_COUNT == 0 ||
+                (date - this.firstWeekend.get(1)) % DAY_COUNT == 0;
     }
 
     public int getLastDateOfMonth() {
@@ -51,8 +49,8 @@ public class Calender {
 
     public String getDay(int date) {
         int daySequence =
-                (startDay.getDaySequence() + date-START_DATE) % DAY_COUNT;
-        if(daySequence==0){
+                (startDay.getDaySequence() + date - START_DATE) % DAY_COUNT;
+        if (daySequence == 0) {
             daySequence = 7;
         }
         return Day.getDayBySequence(daySequence).getName();

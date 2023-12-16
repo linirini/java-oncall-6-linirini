@@ -24,7 +24,7 @@ public class AllocationService {
     }
 
     private boolean workedYesterday(int date, String workerName, WorkSchedule workSchedule) {
-        return workSchedule.getWorker(date - 1).equals(workSchedule.getWorker(date));
+        return workSchedule.getWorker(date - 1).equals(workerName);
     }
 
     private String getWorkerName(Calender calender, WorkingOrders weekWorkers,
