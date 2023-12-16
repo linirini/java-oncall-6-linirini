@@ -1,14 +1,15 @@
-package oncall.util;
+package oncall.util.calender;
 
-import static oncall.util.Month.AUGUST;
-import static oncall.util.Month.DECEMBER;
-import static oncall.util.Month.JANUARY;
-import static oncall.util.Month.JUNE;
-import static oncall.util.Month.MARCH;
-import static oncall.util.Month.MAY;
-import static oncall.util.Month.OCTOBER;
+import static oncall.util.calender.Month.AUGUST;
+import static oncall.util.calender.Month.DECEMBER;
+import static oncall.util.calender.Month.JANUARY;
+import static oncall.util.calender.Month.JUNE;
+import static oncall.util.calender.Month.MARCH;
+import static oncall.util.calender.Month.MAY;
+import static oncall.util.calender.Month.OCTOBER;
 
 import java.util.Arrays;
+import oncall.util.calender.Month;
 
 public enum Holiday {
 

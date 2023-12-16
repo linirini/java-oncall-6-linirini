@@ -2,8 +2,8 @@ package oncall.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import oncall.util.Day;
-import oncall.util.Month;
+import oncall.util.calender.Day;
+import oncall.util.calender.Month;
 import org.junit.jupiter.api.Test;
 
 class CalenderTest {

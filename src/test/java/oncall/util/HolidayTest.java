@@ -2,6 +2,8 @@ package oncall.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import oncall.util.calender.Holiday;
+import oncall.util.calender.Month;
 import org.junit.jupiter.api.Test;
 
 class HolidayTest {

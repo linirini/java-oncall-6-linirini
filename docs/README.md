@@ -19,7 +19,7 @@
     - [ ] 연속 근무 파악하기 - WorkSchedule#getWorker 
   - [ ] 연속되는 2일차가 평일/주말인지에 따라 해당 다음 근무자와 순서 바꿔 편성 - WorkSchedule#change
     - [x] 법정 공휴일인지 확인한다 - Holiday#isHoliday
-    - [ ] 다음 근무자 정보 가져오기 - WorkOrders#getTomorrowWorker
+    - [ ] 다음 근무자 정보 가져오기 - WorkOrders#getWorker
   - [ ] 앞 날짜부터 순서 변경
 - [x] 공휴일 - HolidayEnum
   - [x] 1/1 신정, 3/1 삼일절, 5/5 어린이날, 6/6 현충일, 8/15 광복절, 10/3 개천절, 10/9 한글날, 12/25 성탄절

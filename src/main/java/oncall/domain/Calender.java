@@ -1,12 +1,12 @@
 package oncall.domain;
 
-import static oncall.util.Day.SATURDAY;
-import static oncall.util.Day.SUNDAY;
+import static oncall.util.calender.Day.SATURDAY;
+import static oncall.util.calender.Day.SUNDAY;
 
 import java.util.List;
-import oncall.util.Day;
-import oncall.util.Holiday;
-import oncall.util.Month;
+import oncall.util.calender.Day;
+import oncall.util.calender.Holiday;
+import oncall.util.calender.Month;
 
 public class Calender {
 
