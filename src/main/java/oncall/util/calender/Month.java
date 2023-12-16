@@ -32,4 +32,7 @@ public enum Month {
                 .orElseThrow(() -> new IllegalArgumentException(INVALID_MONTH.getMessage()));
     }
 
+    public int getLastDate() {
+        return lastDate;
+    }
 }

@@ -38,4 +38,8 @@ public class Calender {
                 == 0) || Holiday.isHoliday(month,date);
     }
 
+    public int getLastDateOfMonth(){
+        return month.getLastDate();
+    }
+
 }
