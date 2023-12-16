@@ -45,4 +45,8 @@ public class WorkingOrders {
         }
     }
 
+    public String getWorker(int index){
+        return workingOrders.get(index);
+    }
+
 }
