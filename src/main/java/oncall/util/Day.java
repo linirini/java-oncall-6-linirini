@@ -1,23 +1,33 @@
 package oncall.util;
 
-import static oncall.util.Constants.FRIDAY;
-import static oncall.util.Constants.MONDAY;
-import static oncall.util.Constants.SATURDAY;
-import static oncall.util.Constants.SUNDAY;
-import static oncall.util.Constants.THURSDAY;
-import static oncall.util.Constants.TUESDAY;
-import static oncall.util.Constants.WEDNESDAY;
-
-import java.util.List;
+import java.util.Arrays;
 
 public enum Day {
 
-    WEEK(List.of(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY)),
-    WEEKEND(List.of(SATURDAY, SUNDAY));
+    MONDAY("월",1),
 
-    private final List<String> days;
+    TUESDAY("화",2),
 
-    Day(List<String> days) {
-        this.days = days;
+    WEDNESDAY("수",3),
+
+    THURSDAY("목",4),
+
+    FRIDAY("금",5),
+
+    SATURDAY("토",6),
+
+    SUNDAY("일",7);
+    
+    private final String name;
+    private final int sequence;
+
+    Day(String name, int sequence) {
+        this.name = name;
+        this.sequence = sequence;
     }
+
+    public static Day getDayByName(String name){
+        Arrays.stream(values()).filter(day -> day.name.equals(name)).findFirst().orElseThrow(IllegalArgumentException(INVALID_DAY.getMessage()));
+    }
+
 }
