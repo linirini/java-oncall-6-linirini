@@ -5,6 +5,7 @@ import static oncall.util.ExceptionEnum.SAME_ORDERS;
 
 import java.util.List;
 import oncall.domain.Calender;
+import oncall.domain.WorkSchedule;
 import oncall.domain.WorkingOrders;
 import oncall.service.AllocationService;
 import oncall.util.Validator;
@@ -24,6 +25,7 @@ public class MainController {
         Calender calender = getCalenderUntilNoError();
         WorkingOrders weekWorkingOrders = getWeekWorkingOrdersUntilNoError();
         WorkingOrders weekendWorkingOrders = getWeekendWorkingOrdersUntilNoError(weekWorkingOrders);
+        WorkSchedule workSchedule = allocationService.allocate(calender,weekWorkingOrders,weekendWorkingOrders);
 
     }
 
