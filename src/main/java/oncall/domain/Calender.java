@@ -1,6 +1,7 @@
 package oncall.domain;
 
 import static oncall.util.Constants.DAY_COUNT;
+import static oncall.util.Constants.START_DATE;
 import static oncall.util.calender.Day.SATURDAY;
 import static oncall.util.calender.Day.SUNDAY;
 
@@ -50,7 +51,10 @@ public class Calender {
 
     public String getDay(int date) {
         int daySequence =
-                (startDay.getDaySequence() + date % DAY_COUNT - 1 + DAY_COUNT) % DAY_COUNT;
+                (startDay.getDaySequence() + date-START_DATE) % DAY_COUNT;
+        if(daySequence==0){
+            daySequence = 7;
+        }
         return Day.getDayBySequence(daySequence).getName();
     }
 

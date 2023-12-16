@@ -21,7 +21,7 @@ class CalenderTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"16,토","25,월","13,수"})
+    @CsvSource({"1,금","16,토","25,월","13,수","14,목"})
     void 날짜로_요일_반환(int date, String day) {
         assertThat(new Calender(Month.DECEMBER, Day.FRIDAY).getDay(date)).isEqualTo(day);
     }

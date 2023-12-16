@@ -12,7 +12,7 @@ public class AllocationService {
     public WorkSchedule allocate(Calender calender, WorkingOrders weekWorkers,
             WorkingOrders weekendWorkers) {
         WorkSchedule workSchedule = new WorkSchedule(calender);
-        for (int date = START_DATE; date < calender.getLastDateOfMonth(); date++) {
+        for (int date = START_DATE; date <= calender.getLastDateOfMonth(); date++) {
             String workerName = getWorkerName(calender, weekWorkers, weekendWorkers, date);
             workSchedule.add(workerName);
             if (workedYesterday(date, workerName, workSchedule)) {

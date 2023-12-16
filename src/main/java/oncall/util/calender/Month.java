@@ -35,4 +35,8 @@ public enum Month {
     public int getLastDate() {
         return lastDate;
     }
+
+    public String getName() {
+        return this.month;
+    }
 }

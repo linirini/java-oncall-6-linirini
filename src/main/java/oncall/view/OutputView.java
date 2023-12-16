@@ -10,7 +10,7 @@ import oncall.util.calender.Holiday;
 public class OutputView {
 
     private static final String MONTH = "월 ";
-    private static final String DATE = "일";
+    private static final String DATE = "일 ";
     private static final String HOLIDAY = "(휴일)";
 
     public void printEmergencyWorkSchedule(WorkSchedule workSchedule) {
@@ -24,8 +24,9 @@ public class OutputView {
     private StringBuilder getScheduleOutput(WorkSchedule workSchedule, Calender calender,
             int date) {
         StringBuilder output = new StringBuilder();
-        output.append(calender.getMonth() + MONTH);
+        output.append(calender.getMonth().getName() + MONTH);
         output.append(date + DATE);
+        output.append(calender.getDay(date));
         if (!calender.isWeekend(date) && Holiday.isHoliday(calender.getMonth(), date)) {
             output.append(HOLIDAY);
         }
