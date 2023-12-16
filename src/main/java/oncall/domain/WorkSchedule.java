@@ -30,4 +30,8 @@ public class WorkSchedule {
     }
 
 
+    public void change(String workerName,int date) {
+        schedules.indexOf(date) = workerName;
+    }
+
 }

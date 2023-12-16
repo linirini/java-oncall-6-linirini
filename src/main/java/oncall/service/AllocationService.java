@@ -9,26 +9,27 @@ public class AllocationService {
     public WorkSchedule allocate(Calender calender, WorkingOrders weekWorkers,
             WorkingOrders weekendWorkers) {
         WorkSchedule workSchedule = new WorkSchedule(calender);
-        int weekWorkerSequence = 0;
-        int weekendWorkerSequence = 0;
         for (int date = 1; date < calender.getLastDateOfMonth(); date++) {
-            String workerName = getWorkerName(calender, weekWorkers, weekendWorkers,
-                    weekWorkerSequence,
-                    weekendWorkerSequence, date);
+            String workerName = getWorkerName(calender, weekWorkers, weekendWorkers, date);
             workSchedule.add(workerName);
+            if (workedYesterday(date, workerName, workSchedule)) {
+                String tomorrowWorkerName = getWorkerName(calender, weekWorkers, weekendWorkers, date);
+                workSchedule.change(tomorrowWorkerName, date);
+            }
         }
         return workSchedule;
     }
 
+    private boolean workedYesterday(int date, String workerName, WorkSchedule workSchedule) {
+        return workSchedule.getWorker(date - 1).equals(workSchedule.getWorker(date));
+    }
+
     private String getWorkerName(Calender calender, WorkingOrders weekWorkers,
-            WorkingOrders weekendWorkers, int weekWorkerSequence, int weekendWorkerSequence,
-            int date) {
+            WorkingOrders weekendWorkers, int date) {
         if (calender.isWeekend(date)) {
-            weekendWorkerSequence++;
-            return weekendWorkers.getWorker(weekendWorkerSequence);
+            return weekendWorkers.getWorker();
         }
-        weekWorkerSequence++;
-        return weekWorkers.getWorker(weekWorkerSequence);
+        return weekWorkers.getWorker();
     }
 
 }

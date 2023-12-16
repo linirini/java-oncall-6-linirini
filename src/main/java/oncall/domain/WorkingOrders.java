@@ -13,10 +13,12 @@ import java.util.List;
 public class WorkingOrders {
 
     private final List<String> workingOrders;
+    private int currentSequence;
 
     public WorkingOrders(List<String> workingOrders) {
         validate(workingOrders);
         this.workingOrders = workingOrders;
+        this.currentSequence = 0;
     }
 
     private void validate(List<String> workingOrders) {
@@ -45,8 +47,10 @@ public class WorkingOrders {
         }
     }
 
-    public String getWorker(int index){
-        return workingOrders.get(index);
+    public String getWorker(){
+        String name = workingOrders.get(currentSequence);
+        currentSequence++;
+        return name;
     }
 
 }
