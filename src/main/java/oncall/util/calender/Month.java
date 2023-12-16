@@ -28,7 +28,7 @@ public enum Month {
     }
 
     public static Month getMonth(String month) {
-        return Arrays.stream(values()).filter(monthEnum -> monthEnum.equals(month)).findFirst()
+        return Arrays.stream(values()).filter(monthEnum -> monthEnum.month.equals(month)).findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(INVALID_MONTH.getMessage()));
     }
 
