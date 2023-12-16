@@ -5,6 +5,7 @@ import static oncall.util.Day.SUNDAY;
 
 import java.util.List;
 import oncall.util.Day;
+import oncall.util.Holiday;
 import oncall.util.Month;
 
 public class Calender {
@@ -34,8 +35,7 @@ public class Calender {
 
     public boolean isWeekend(int date) {
         return (date - this.firstWeekend.get(0)) % 7 == 0 || (date - this.firstWeekend.get(1) % 7
-                == 0);
-
+                == 0) || Holiday.isHoliday(month,date);
     }
 
 }
