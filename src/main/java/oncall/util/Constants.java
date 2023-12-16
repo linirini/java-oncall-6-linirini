@@ -6,5 +6,6 @@ public class Constants {
     public static final int MAXIMUM_NICK_NAME_LENGTH = 5;
     public static final int MINIMUM_NICK_NAME_COUNT = 5;
     public static final int MAXIMUM_NICK_NAME_COUNT = 35;
+    public static final String NONE = "";
 
 }
