@@ -1,15 +1,16 @@
 package oncall.domain;
 
-import java.util.HashMap;
 import java.util.List;
 import oncall.util.Calender;
 
 public class WorkSchedule {
 
-    private final HashMap<Calender, List<String>> allocationResult;
+    private final Calender calender;
+    private final List<String> schedules;
 
-    public WorkSchedule(HashMap<Calender, List<String>> allocationResult) {
-        this.allocationResult = allocationResult;
+    public WorkSchedule(Calender calender, List<String> schedules) {
+        this.calender = calender;
+        this.schedules = schedules;
     }
 
 }
