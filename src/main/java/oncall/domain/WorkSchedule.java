@@ -31,7 +31,8 @@ public class WorkSchedule {
 
 
     public void change(String workerName,int date) {
-        schedules.indexOf(date) = workerName;
+        schedules.remove(date);
+        schedules.add(workerName);
     }
 
 }
