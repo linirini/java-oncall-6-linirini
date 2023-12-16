@@ -15,4 +15,11 @@ class WorkingOrdersTest {
                 IllegalArgumentException.class);
     }
 
+    @DisplayName("중복된 닉네임이 존재하면 예외를 던진다.")
+    @Test
+    void 이름_중복_예외() {
+        assertThatThrownBy(() -> new WorkingOrders(List.of("가나", "마바", "가나"))).isInstanceOf(
+                IllegalArgumentException.class);
+    }
+
 }
