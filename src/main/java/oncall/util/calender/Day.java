@@ -34,10 +34,10 @@ public enum Day {
     }
 
     public static Day getDayBySequence(int sequence) {
-        return Arrays.stream(values()).filter(day -> day.sequence==sequence).findFirst().get();
+        return Arrays.stream(values()).filter(day -> day.sequence == sequence).findFirst().get();
     }
 
-    public int getDaySequence(){
+    public int getDaySequence() {
         return sequence;
     }
 

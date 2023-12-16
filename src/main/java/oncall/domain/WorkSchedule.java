@@ -25,12 +25,12 @@ public class WorkSchedule {
         schedules.add(name);
     }
 
-    public String getWorker(int date){
+    public String getWorker(int date) {
         return schedules.get(date);
     }
 
 
-    public void change(String workerName,int date) {
+    public void change(String workerName, int date) {
         schedules.remove(date);
         schedules.add(workerName);
     }

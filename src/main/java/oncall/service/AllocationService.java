@@ -16,7 +16,8 @@ public class AllocationService {
             String workerName = getWorkerName(calender, weekWorkers, weekendWorkers, date);
             workSchedule.add(workerName);
             if (workedYesterday(date, workerName, workSchedule)) {
-                String tomorrowWorkerName = getWorkerName(calender, weekWorkers, weekendWorkers, date);
+                String tomorrowWorkerName = getWorkerName(calender, weekWorkers, weekendWorkers,
+                        date);
                 workSchedule.change(tomorrowWorkerName, date);
             }
         }
@@ -29,10 +30,10 @@ public class AllocationService {
 
     private String getWorkerName(Calender calender, WorkingOrders weekWorkers,
             WorkingOrders weekendWorkers, int date) {
-        if (calender.isWeekend(date)|| Holiday.isHoliday(calender.getMonth(),date)) {
-            return weekendWorkers.getWorker();
+        if (calender.isWeekend(date) || Holiday.isHoliday(calender.getMonth(), date)) {
+            return weekendWorkers.pullOutWorker();
         }
-        return weekWorkers.getWorker();
+        return weekWorkers.pullOutWorker();
     }
 
 }
