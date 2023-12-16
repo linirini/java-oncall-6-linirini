@@ -49,7 +49,7 @@ public class WorkingOrders {
     }
 
     public String pullOutWorker() {
-        String name = workingOrders.get(currentSequence);
+        String name = workingOrders.get(currentSequence%workingOrders.size());
         currentSequence++;
         return name;
     }
