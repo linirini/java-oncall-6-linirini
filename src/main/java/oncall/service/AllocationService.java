@@ -3,19 +3,22 @@ package oncall.service;
 import static oncall.util.Constants.START_DATE;
 
 import oncall.domain.Calender;
+import oncall.domain.Orders;
 import oncall.domain.WorkSchedule;
 import oncall.domain.WorkingOrders;
 import oncall.util.calender.Holiday;
 
 public class AllocationService {
 
-    public WorkSchedule allocate(Calender calender, WorkingOrders weekWorkers,
-            WorkingOrders weekendWorkers) {
+    public WorkSchedule allocate(Calender calender, Orders orders) {
         WorkSchedule workSchedule = new WorkSchedule(calender);
+        WorkingOrders weekWorkers = orders.getWeekOrders();
+        WorkingOrders weekendWorkers = orders.getWeekendOrders();
         for (int date = START_DATE; date <= calender.getLastDateOfMonth(); date++) {
             String workerName = getWorkerName(calender, weekWorkers, weekendWorkers, date);
             if (workedYesterday(date, workerName, workSchedule)) {
-                String nextTurnWorkerName = getWorkerName(calender, weekWorkers, weekendWorkers, date);
+                String nextTurnWorkerName = getWorkerName(calender, weekWorkers, weekendWorkers,
+                        date);
                 workSchedule.add(nextTurnWorkerName);
             }
             workSchedule.add(workerName);
