@@ -10,7 +10,7 @@ public enum ExceptionEnum {
     LESS_INFO("입력 정보가 부족합니다."),
     FRONT_BLANK("입력은 공백으로 시작할 수 없습니다."),
     EMPTY_INPUT("빈 입력입니다."),
-    SAME_ORDERS("평일 비상 근무 순번과 같습니다. 다시 입력해주세요.");
+    SAME_ORDERS("평일 비상 근무 순번과 휴일 비상 근무 순번은 같을 수 없습니다. 다시 입력해주세요.");
 
     private static final String ERROR = "[ERROR] ";
     private String message;
