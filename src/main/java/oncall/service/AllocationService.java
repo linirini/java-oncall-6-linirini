@@ -14,7 +14,7 @@ public class AllocationService {
         for (int date = START_DATE; date <= calender.getLastDateOfMonth(); date++) {
             String workerName = getWorkerName(calender, orders, date);
             if (workedYesterday(date, workerName, workSchedule)) {
-                String nextTurnWorkerName = getWorkerName(calender, orders, date);
+                String nextTurnWorkerName = getWorkerNameWhileNotSame(calender,orders,date,workerName);
                 workSchedule.add(nextTurnWorkerName);
             }
             workSchedule.add(workerName);
@@ -24,6 +24,15 @@ public class AllocationService {
 
     private boolean workedYesterday(int date, String workerName, WorkSchedule workSchedule) {
         return workSchedule.getWorker(date - 1).equals(workerName);
+    }
+
+    private String getWorkerNameWhileNotSame(Calender calender, Orders orders, int date, String workerName) {
+        while(true){
+            String nextTurnWorkerName = getWorkerName(calender,orders,date);
+            if(!nextTurnWorkerName.equals(workerName)){
+                return nextTurnWorkerName;
+            }
+        }
     }
 
     private String getWorkerName(Calender calender, Orders orders, int date) {
