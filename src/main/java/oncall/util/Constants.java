@@ -12,5 +12,7 @@ public class Constants {
     public static final char BLANK = ' ';
     public static final int START_DATE = 1;
     public static final int DAY_COUNT = 7;
+    public static final int WEEK_ORDER = 0;
+    public static final int WEEKEND_ORDER = 1;
 
 }
