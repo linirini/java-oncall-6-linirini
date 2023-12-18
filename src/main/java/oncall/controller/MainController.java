@@ -24,7 +24,6 @@ public class MainController {
     public void run() {
         Calender calender = getCalenderUntilNoError();
         Orders orders = getOrdersUntilNoError();
-
         WorkSchedule workSchedule = allocationService.allocate(calender, orders);
         outputView.printEmergencyWorkSchedule(workSchedule);
     }
@@ -54,10 +53,9 @@ public class MainController {
             String weekInput = inputView.inputWeekWorkingOrder();
             String weekendInput = inputView.inputWeekendWorkingOrder();
             try {
-                validateFormat(weekInput);
-                validateFormat(weekendInput);
-                return new Orders(
-                        List.of(getWorkingOrders(weekInput), getWorkingOrders(weekendInput)));
+                WorkingOrders weekWorkingOrders = getWorkingOrders(weekInput);
+                WorkingOrders weekendWorkingOrders = getWorkingOrders(weekendInput);
+                return new Orders(weekWorkingOrders, weekendWorkingOrders);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -65,6 +63,7 @@ public class MainController {
     }
 
     private WorkingOrders getWorkingOrders(String input) {
+        validateFormat(input);
         return new WorkingOrders(List.of(input.split(SEPARATOR)));
     }
 
