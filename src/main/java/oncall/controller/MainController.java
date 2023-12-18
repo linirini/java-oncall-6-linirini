@@ -1,10 +1,10 @@
 package oncall.controller;
 
 import static oncall.util.Constants.SEPARATOR;
-import static oncall.util.ExceptionEnum.SAME_ORDERS;
 
 import java.util.List;
 import oncall.domain.Calender;
+import oncall.domain.Orders;
 import oncall.domain.WorkSchedule;
 import oncall.domain.WorkingOrders;
 import oncall.service.AllocationService;
@@ -23,10 +23,9 @@ public class MainController {
 
     public void run() {
         Calender calender = getCalenderUntilNoError();
-        WorkingOrders weekWorkingOrders = getWeekWorkingOrdersUntilNoError();
-        WorkingOrders weekendWorkingOrders = getWeekendWorkingOrdersUntilNoError(weekWorkingOrders);
-        WorkSchedule workSchedule = allocationService.allocate(calender, weekWorkingOrders,
-                weekendWorkingOrders);
+        Orders orders = getOrdersUntilNoError();
+
+        WorkSchedule workSchedule = allocationService.allocate(calender, orders);
         outputView.printEmergencyWorkSchedule(workSchedule);
     }
 
@@ -50,45 +49,29 @@ public class MainController {
                 Day.getDayByName(calenderInfo.get(1)));
     }
 
-    private WorkingOrders getWeekWorkingOrdersUntilNoError() {
+    private Orders getOrdersUntilNoError() {
         while (true) {
-            String input = inputView.inputWeekWorkingOrder();
+            String weekInput = inputView.inputWeekWorkingOrder();
+            String weekendInput = inputView.inputWeekendWorkingOrder();
             try {
-                validateFormat(input);
-                return new WorkingOrders(List.of(input.split(SEPARATOR)));
+                validateFormat(weekInput);
+                validateFormat(weekendInput);
+                return new Orders(
+                        List.of(getWorkingOrders(weekInput), getWorkingOrders(weekendInput)));
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
     }
 
-    private WorkingOrders getWeekendWorkingOrdersUntilNoError(WorkingOrders weekWorkingOrders) {
-        while (true) {
-            String input = inputView.inputWeekendWorkingOrder();
-            try {
-                validateFormat(input);
-                WorkingOrders weekendWorkingOrders = new WorkingOrders(
-                        List.of(input.split(SEPARATOR)));
-                throwIfSameAsWeekWorkingOrders(weekWorkingOrders, weekendWorkingOrders);
-                return weekendWorkingOrders;
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
+    private WorkingOrders getWorkingOrders(String input) {
+        return new WorkingOrders(List.of(input.split(SEPARATOR)));
     }
 
     private void validateFormat(String input) {
         Validator.checkEmptyValue(input);
         Validator.checkFrontBlank(input);
     }
-
-    private void throwIfSameAsWeekWorkingOrders(WorkingOrders weekWorkingOrders,
-            WorkingOrders weekendWorkingOrders) {
-        if (weekWorkingOrders.getWorkingOrders().equals(weekendWorkingOrders.getWorkingOrders())) {
-            throw new IllegalArgumentException(SAME_ORDERS.getMessage());
-        }
-    }
-
 
 }
 
